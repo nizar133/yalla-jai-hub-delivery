@@ -26,26 +26,26 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#4CAF50', // Main green
-					light: '#E8F5E9',   // Light green for backgrounds
-					dark: '#2E7D32',    // Dark green for hover states
-					foreground: '#FFFFFF' // White text on primary
+					DEFAULT: '#FF7A00', // اللون البرتقالي الأساسي
+					light: '#FFF0E0',   // اللون البرتقالي الفاتح للخلفيات
+					dark: '#E56C00',    // اللون البرتقالي الداكن للتحويم
+					foreground: '#FFFFFF' // لون الخط على الأزرار البرتقالية
 				},
 				secondary: {
-					DEFAULT: '#F5F5F5', // Light gray for secondary elements
-					foreground: '#333333' // Dark text on secondary
+					DEFAULT: '#6B7280', // اللون الرمادي للعناصر الثانوية 
+					foreground: '#FFFFFF' // لون الخط على العناصر الرمادية
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
 				muted: {
-					DEFAULT: '#F9F9F9', // Very light gray
-					foreground: '#666666' // Medium gray text
+					DEFAULT: '#F3F4F6', // رمادي فاتح جداً
+					foreground: '#4B5563' // رمادي متوسط للنصوص
 				},
 				accent: {
-					DEFAULT: '#E0E0E0', // Light accent
-					foreground: '#333333' // Dark text on accent
+					DEFAULT: '#E5E7EB', // لون خفيف للتأكيد
+					foreground: '#374151' // لون داكن للنصوص على التأكيد
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
