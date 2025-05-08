@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { Package, Truck, Store, User } from 'lucide-react';
@@ -45,10 +44,19 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-primary text-white text-center p-10 md:p-20">
-        <div className="container mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">يلا جاي</h1>
-          <p className="text-xl md:text-2xl mb-6">منصة توصيل الطلبات الأسرع والأكثر كفاءة</p>
+      <div className="bg-primary text-white text-center p-10 md:p-20 relative overflow-hidden">
+        <div className="container mx-auto z-10 relative">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
+            <img 
+              src="/lovable-uploads/8e1d21d7-1b51-4628-a022-e7616bd803e4.png" 
+              alt="يلا جاي" 
+              className="w-32 h-32 object-contain bg-white p-2 rounded-full shadow-lg" 
+            />
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">يلا جاي</h1>
+              <p className="text-xl md:text-2xl">منصة توصيل الطلبات الأسرع والأكثر كفاءة</p>
+            </div>
+          </div>
           <Button 
             onClick={() => navigate('/login')} 
             size="lg" 
@@ -99,6 +107,11 @@ const Index = () => {
       {/* CTA Section */}
       <div className="bg-gray-100 py-16 px-4 text-center">
         <div className="container mx-auto">
+          <img 
+            src="/lovable-uploads/8e1d21d7-1b51-4628-a022-e7616bd803e4.png" 
+            alt="يلا جاي" 
+            className="w-24 h-24 mx-auto mb-6 object-contain bg-white p-2 rounded-full shadow-lg" 
+          />
           <h2 className="text-3xl font-bold mb-6">جاهز للإنضمام معنا؟</h2>
           <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
             انضم إلى منصة يلا جاي اليوم وكن جزءاً من شبكتنا المتنامية من الزبائن، أصحاب المتاجر، وسائقي التوصيل.
@@ -117,9 +130,11 @@ const Index = () => {
       <footer className="bg-white py-8 border-t">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-4">
-            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">يج</span>
-            </div>
+            <img 
+              src="/lovable-uploads/8e1d21d7-1b51-4628-a022-e7616bd803e4.png" 
+              alt="يلا جاي" 
+              className="w-12 h-12 object-contain" 
+            />
           </div>
           <p className="text-gray-600">© {new Date().getFullYear()} يلا جاي. جميع الحقوق محفوظة</p>
         </div>

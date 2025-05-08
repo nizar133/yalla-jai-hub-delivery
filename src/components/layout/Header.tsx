@@ -40,10 +40,12 @@ export function Header() {
           </Sheet>
 
           <a href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">يج</span>
-            </div>
-            <h1 className="text-xl font-bold">يلا جاي</h1>
+            <img 
+              src="/lovable-uploads/8e1d21d7-1b51-4628-a022-e7616bd803e4.png" 
+              alt="يلا جاي" 
+              className="w-10 h-10 object-contain" 
+            />
+            <h1 className="text-xl font-bold text-primary">يلا جاي</h1>
           </a>
         </div>
 

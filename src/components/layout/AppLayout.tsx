@@ -14,8 +14,14 @@ export function AppLayout({ requireAuth = true }: AppLayoutProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader className="h-8 w-8 animate-spin" />
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <img 
+          src="/lovable-uploads/8e1d21d7-1b51-4628-a022-e7616bd803e4.png" 
+          alt="يلا جاي" 
+          className="w-24 h-24 mb-6 object-contain animate-pulse" 
+        />
+        <Loader className="h-8 w-8 animate-spin text-primary" />
+        <p className="mt-4 text-gray-500">جاري التحميل...</p>
       </div>
     );
   }

@@ -131,14 +131,18 @@ export function Sidebar() {
     <div className="min-h-screen border-l border-gray-200 bg-white flex flex-col w-64">
       <div className="p-4 border-b">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-            <span className="text-white font-bold">يج</span>
+          <img 
+            src="/lovable-uploads/8e1d21d7-1b51-4628-a022-e7616bd803e4.png" 
+            alt="يلا جاي" 
+            className="w-10 h-10 object-contain" 
+          />
+          <div>
+            <h2 className="text-lg font-semibold text-primary">يلا جاي</h2>
+            <p className="text-sm text-gray-500">
+              {getRoleDisplayName(user.role)}
+            </p>
           </div>
-          <h2 className="text-lg font-semibold">يلا جاي</h2>
         </div>
-        <p className="text-sm text-gray-500 mt-1">
-          {getRoleDisplayName(user.role)}
-        </p>
       </div>
       
       <ScrollArea className="flex-1">
