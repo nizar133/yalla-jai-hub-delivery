@@ -11,25 +11,45 @@ export interface User {
   createdAt: Date;
 }
 
+// تعريف فئات المتاجر الرئيسية
+export type StoreCategory = 'grocery' | 'restaurant' | 'other';
+
+// ترجمة فئات المتاجر للعربية
+export const storeCategoryNames: Record<StoreCategory, string> = {
+  grocery: 'البقالة والسوبرماركت',
+  restaurant: 'المطاعم والحلويات',
+  other: 'أخرى'
+};
+
 export interface Store {
   id: string;
   name: string;
   description: string;
   logo: string;
+  coverImage: string; // صورة واجهة المتجر الرئيسية
   ownerId: string; // Vendor ID
   address: string;
-  categories: string[];
+  category: StoreCategory; // فئة المتجر الرئيسية
+  sections: StoreSection[]; // أقسام المتجر
   rating?: number;
+}
+
+// قسم داخل المتجر
+export interface StoreSection {
+  id: string;
+  name: string;
+  coverImage: string;
+  storeId: string;
 }
 
 export interface Product {
   id: string;
   storeId: string;
+  sectionId: string; // القسم الذي ينتمي إليه المنتج
   name: string;
   description: string;
   price: number;
-  image: string;
-  category: string;
+  images: string[]; // مصفوفة من الصور (1-5 صور)
   available: boolean;
 }
 
