@@ -11,12 +11,14 @@ import {
   Users,
   Truck,
   User,
+  Layers,
+  DollarSign
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 export function Sidebar() {
-  const { user } = useAuth();
+  const { user, hasPermission } = useAuth();
   const location = useLocation();
 
   if (!user) {
@@ -28,7 +30,7 @@ export function Sidebar() {
     const baseItems = [
       {
         name: 'لوحة التحكم',
-        path: `/dashboard/${user.role}`,
+        path: `/dashboard`,
         icon: LayoutDashboard,
       },
       {
@@ -62,7 +64,17 @@ export function Sidebar() {
         return [
           ...baseItems,
           {
-            name: 'منتجاتي',
+            name: 'متجري',
+            path: '/my-store',
+            icon: Store,
+          },
+          {
+            name: 'أقسام المتجر',
+            path: '/store-sections',
+            icon: Layers,
+          },
+          {
+            name: 'المنتجات',
             path: '/products',
             icon: Package,
           },
@@ -70,11 +82,6 @@ export function Sidebar() {
             name: 'الطلبات',
             path: '/orders',
             icon: ShoppingCart,
-          },
-          {
-            name: 'متجري',
-            path: '/my-store',
-            icon: Store,
           },
         ];
       case 'driver':
@@ -101,12 +108,17 @@ export function Sidebar() {
           },
           {
             name: 'المتاجر',
-            path: '/admin-stores',
+            path: '/stores-management',
             icon: Store,
           },
           {
+            name: 'التصنيفات',
+            path: '/categories',
+            icon: Layers,
+          },
+          {
             name: 'الطلبات',
-            path: '/admin-orders',
+            path: '/orders',
             icon: Package,
           },
           {
@@ -115,11 +127,60 @@ export function Sidebar() {
             icon: Truck,
           },
           {
+            name: 'إدارة العملة',
+            path: '/currency',
+            icon: DollarSign,
+          },
+          {
             name: 'الإعدادات',
             path: '/settings',
             icon: Settings,
           },
         ];
+      case 'staff':
+        const staffItems = [...baseItems];
+        
+        if (hasPermission('manage_stores')) {
+          staffItems.push({
+            name: 'المتاجر',
+            path: '/stores-management',
+            icon: Store,
+          });
+        }
+        
+        if (hasPermission('manage_orders')) {
+          staffItems.push({
+            name: 'الطلبات',
+            path: '/orders',
+            icon: Package,
+          });
+        }
+        
+        if (hasPermission('manage_users')) {
+          staffItems.push({
+            name: 'المستخدمين',
+            path: '/users',
+            icon: Users,
+          });
+        }
+        
+        if (hasPermission('manage_drivers')) {
+          staffItems.push({
+            name: 'السائقين',
+            path: '/drivers',
+            icon: Truck,
+          });
+        }
+        
+        if (hasPermission('manage_currency')) {
+          staffItems.push({
+            name: 'إدارة العملة',
+            path: '/currency',
+            icon: DollarSign,
+          });
+        }
+        
+        return staffItems;
       default:
         return baseItems;
     }
@@ -185,6 +246,8 @@ function getRoleDisplayName(role: string): string {
       return 'سائق توصيل';
     case 'admin':
       return 'مدير النظام';
+    case 'staff':
+      return 'مساعد إداري';
     default:
       return role;
   }

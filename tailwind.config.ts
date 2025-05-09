@@ -26,14 +26,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#4CAF50', // Main green
-					light: '#E8F5E9',   // Light green for backgrounds
-					dark: '#2E7D32',    // Dark green for hover states
+					DEFAULT: '#FF7A00', // Orange
+					light: '#FFF0E6',   // Light orange for backgrounds
+					dark: '#CC6200',    // Dark orange for hover states
 					foreground: '#FFFFFF' // White text on primary
 				},
 				secondary: {
-					DEFAULT: '#F5F5F5', // Light gray for secondary elements
-					foreground: '#333333' // Dark text on secondary
+					DEFAULT: '#6B7280', // Gray
+					light: '#F3F4F6',   // Light gray
+					dark: '#4B5563',    // Dark gray
+					foreground: '#FFFFFF' // White text on secondary
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',

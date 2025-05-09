@@ -1,18 +1,14 @@
 
-import { useState } from 'react';
-import RegisterForm from '@/components/RegisterForm';
-import { Card } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
+import { LoginForm } from '@/components/LoginForm';
 
 export default function Login() {
-  const [activeTab, setActiveTab] = useState<string>('register');
   const { user } = useAuth();
 
   // Redirect to dashboard if already logged in
   if (user) {
-    return <Navigate to={`/dashboard/${user.role}`} replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return (
@@ -30,20 +26,7 @@ export default function Login() {
           <p className="text-gray-500 mt-2">منصة توصيل الطلبات الأسرع</p>
         </div>
 
-        <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid grid-cols-2 mb-6">
-            <TabsTrigger value="register">تسجيل جديد</TabsTrigger>
-            <TabsTrigger value="login">تسجيل دخول</TabsTrigger>
-          </TabsList>
-          <TabsContent value="register">
-            <RegisterForm />
-          </TabsContent>
-          <TabsContent value="login">
-            <Card>
-              <RegisterForm />
-            </Card>
-          </TabsContent>
-        </Tabs>
+        <LoginForm />
       </div>
     </div>
   );

@@ -1,35 +1,66 @@
 
-export type UserRole = 'customer' | 'vendor' | 'driver' | 'admin';
+export type UserRole = 'customer' | 'vendor' | 'driver' | 'admin' | 'staff';
 
 export interface User {
   id: string;
-  phone: string;
+  phone?: string;
   name: string;
   role: UserRole;
   email?: string;
   avatar?: string;
   createdAt: Date;
+  permissions?: Permission[];
+  vendorId?: string; // For vendors/staff associated with a store
 }
+
+export type Permission = 
+  | 'manage_stores'
+  | 'manage_categories' 
+  | 'manage_products'
+  | 'manage_orders'
+  | 'manage_users'
+  | 'manage_drivers'
+  | 'manage_currency'
+  | 'view_reports';
+
+export type StoreCategory = 
+  | 'grocery' 
+  | 'restaurant' 
+  | 'sweets' 
+  | 'other';
 
 export interface Store {
   id: string;
   name: string;
   description: string;
   logo: string;
+  coverImage?: string;
   ownerId: string; // Vendor ID
   address: string;
-  categories: string[];
+  category: StoreCategory;
   rating?: number;
 }
 
-export interface Product {
+export interface StoreSection {
   id: string;
   storeId: string;
   name: string;
   description: string;
-  price: number;
   image: string;
-  category: string;
+  order: number;
+}
+
+export type CurrencyType = 'SYP' | 'USD';
+
+export interface Product {
+  id: string;
+  storeId: string;
+  sectionId: string;
+  name: string;
+  description: string;
+  price: number;
+  currencyType: CurrencyType;
+  images: string[];
   available: boolean;
 }
 
@@ -38,6 +69,7 @@ export interface OrderItem {
   productName: string;
   quantity: number;
   price: number;
+  currencyType: CurrencyType;
 }
 
 export type OrderStatus = 
@@ -69,4 +101,10 @@ export interface Statistic {
   value: string | number;
   change?: number;
   icon?: React.ReactNode;
+}
+
+export interface CurrencyRate {
+  id: string;
+  rate: number; // Exchange rate USD to SYP
+  createdAt: Date;
 }

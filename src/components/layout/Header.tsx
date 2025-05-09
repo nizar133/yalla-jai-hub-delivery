@@ -6,18 +6,20 @@ import {
   UserCircle, 
   LogOut, 
   ShoppingCart, 
-  Menu 
+  Menu,
+  DollarSign
 } from 'lucide-react';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Sidebar } from './Sidebar';
 import { useDirection } from '@/components/DirectionProvider';
+import { useCurrency } from '@/contexts/CurrencyContext';
 
 export function Header() {
   const { user, logout } = useAuth();
+  const { currentRate } = useCurrency();
   const navigate = useNavigate();
   const { direction } = useDirection();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -50,6 +52,12 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
+          {/* Currency display */}
+          <div className="hidden md:flex items-center text-sm bg-gray-100 rounded-full px-3 py-1">
+            <DollarSign className="h-3 w-3 text-primary mr-1" />
+            <span>1 = {currentRate} ل.س</span>
+          </div>
+          
           {user ? (
             <>
               {user.role === 'customer' && (
@@ -60,7 +68,7 @@ export function Header() {
 
               <div className="flex items-center gap-2">
                 <span className="hidden md:inline text-sm font-medium">
-                  {user.name || user.phone}
+                  {user.name || user.email || user.phone}
                 </span>
                 <Button variant="ghost" size="icon" onClick={() => navigate('/profile')}>
                   <UserCircle className="h-5 w-5" />
