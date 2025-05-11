@@ -43,6 +43,12 @@ export default function Index() {
       name: 'حلويات',
       icon: <Store className="h-6 w-6 text-primary" />,
       description: 'استمتع بأشهى الحلويات العربية والشرقية'
+    },
+    {
+      id: 'other',
+      name: 'أخرى',
+      icon: <Store className="h-6 w-6 text-primary" />,
+      description: 'اكتشف المزيد من المتاجر المتنوعة'
     }
   ];
   
@@ -77,7 +83,7 @@ export default function Index() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">تصفح حسب التصنيف</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {categories.map((category) => (
               <Link key={category.id} to={`/category/${category.id}`}>
                 <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col items-center text-center">
@@ -289,16 +295,17 @@ export default function Index() {
               <div>
                 <h4 className="font-semibold mb-3">المتاجر</h4>
                 <ul className="space-y-2">
-                  <li><a href="#" className="text-gray-400 hover:text-white">بقالة وسوبرماركت</a></li>
-                  <li><a href="#" className="text-gray-400 hover:text-white">مطاعم</a></li>
-                  <li><a href="#" className="text-gray-400 hover:text-white">حلويات</a></li>
+                  <li><Link to="/category/grocery" className="text-gray-400 hover:text-white">بقالة وسوبرماركت</Link></li>
+                  <li><Link to="/category/restaurant" className="text-gray-400 hover:text-white">مطاعم</Link></li>
+                  <li><Link to="/category/sweets" className="text-gray-400 hover:text-white">حلويات</Link></li>
+                  <li><Link to="/category/other" className="text-gray-400 hover:text-white">أخرى</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-3">الحساب</h4>
                 <ul className="space-y-2">
-                  <li><a href="#" className="text-gray-400 hover:text-white">تسجيل الدخول</a></li>
-                  <li><a href="#" className="text-gray-400 hover:text-white">تسجيل جديد</a></li>
+                  <li><Link to="/login" className="text-gray-400 hover:text-white">تسجيل الدخول</Link></li>
+                  <li><Link to="/register" className="text-gray-400 hover:text-white">تسجيل جديد</Link></li>
                   <li><a href="#" className="text-gray-400 hover:text-white">المساعدة</a></li>
                 </ul>
               </div>

@@ -1,7 +1,8 @@
 
 import { useAuth } from '@/contexts/AuthContext';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { LoginForm } from '@/components/LoginForm';
+import { Button } from '@/components/ui/button';
 
 export default function Login() {
   const { user } = useAuth();
@@ -27,6 +28,13 @@ export default function Login() {
         </div>
 
         <LoginForm />
+        
+        <div className="text-center mt-6">
+          <p className="text-gray-600 mb-2">ليس لديك حساب؟</p>
+          <Button variant="outline" asChild className="w-full">
+            <Link to="/register">إنشاء حساب جديد</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

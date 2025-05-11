@@ -13,6 +13,7 @@ import { AppLayout } from "./components/layout/AppLayout";
 
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import StoreDetails from "./pages/StoreDetails";
@@ -33,6 +34,7 @@ const App = () => (
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                     
                     {/* Protected routes */}
                     <Route element={<AppLayout requireAuth={true} />}>

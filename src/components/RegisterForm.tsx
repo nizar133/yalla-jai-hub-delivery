@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function RegisterForm() {
+export function RegisterForm() {
   const [phone, setPhone] = useState('');
   const [role, setRole] = useState<UserRole>('customer');
   const [name, setName] = useState('');
@@ -31,7 +31,7 @@ export default function RegisterForm() {
       updateUser({ name });
       
       // Redirect to the appropriate dashboard based on the user role
-      navigate(`/dashboard/${role}`);
+      navigate(`/dashboard`);
     } catch (error) {
       console.error('Registration failed:', error);
     }
@@ -94,10 +94,6 @@ export default function RegisterForm() {
                 <div className="flex items-center space-x-2 space-x-reverse">
                   <RadioGroupItem value="driver" id="driver" />
                   <Label htmlFor="driver">سائق توصيل</Label>
-                </div>
-                <div className="flex items-center space-x-2 space-x-reverse">
-                  <RadioGroupItem value="admin" id="admin" />
-                  <Label htmlFor="admin">مدير نظام</Label>
                 </div>
               </RadioGroup>
             </div>
